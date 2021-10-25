@@ -146,6 +146,11 @@ export class WarrantHandler{
 
     //Messages to get
 
+    /**
+     * Retrieves the list of error messages displayed after the "Submit" button has been clicked.
+     * @returns The error messages stored in a string array
+     * @example await wh.getErrorMessages();
+     */
     async getErrorMessages(): Promise<string[]>{
         let errors = [];
 
@@ -162,7 +167,12 @@ export class WarrantHandler{
         return (await this.driver.findElement(this.ncicTextMessage).getText());
     }
 
-    //helper method to determine if a specific error message exists in the list of error messages
+    /**
+     * Helper method to determine if a specific error message exists in the list of error messages
+     * @param errorMessage : The error message to find in the list of error messages
+     * @returns True if the errorMessage is found in the list, false if not found
+     * @example await wh.doesErrorMessageExist(wh.headerMandatoryErrMsg)
+     */
     async doesErrorMessageExist(errorMessage: string): Promise<boolean>{
 
         let errMsgs: string[] = await this.getErrorMessages();
